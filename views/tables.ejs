@@ -1,0 +1,30 @@
+<%- include("partials/header.ejs") %> 
+
+
+    <div class="ui main text container">
+        <div class="ui huge header">Tables</div>
+        <div class="ui top attached">
+            <div class="ui divided items">
+                <% tables.forEach(function(table){ %> 
+                    <div class="item">
+                        <table class="ui celled table">
+                            <tbody>
+                                <% table.cols.forEach(function(col){ %> 
+                                    <tr>
+                                    <td><%= col.lowDice %> - <%= col.highDice %> </td>
+                                    <% col.rows.forEach(function(row){ %>
+                                        <td><%= row %> </td>
+                                    <% }) %> 
+                                    </tr>
+                                <% }) %> 
+                            </tbody>
+                        </table>
+                    </div>
+                <% }) %> 
+            </div>
+        </div>
+
+    </div>
+
+
+<%- include("partials/footer.ejs") %> 

@@ -1,0 +1,184 @@
+{
+    "title": "Magic Item Table B",
+    "headers": [
+        "d100", 
+        "Magic Item"
+    ],
+    "cols": [
+        {
+            "lowDice": 1,
+            "highDice": 15,
+            "rows": ["Potion of healing (greater)"]
+        },
+        {
+            "lowDice": 16,
+            "highDice": 22,
+            "rows": ["Potion of fire breath"]
+        },
+        {
+            "lowDice": 23,
+            "highDice": 29,
+            "rows": ["Potion of resistance"]
+        },
+        {
+            "lowDice": 30,
+            "highDice": 34,
+            "rows": ["Ammunition, +1"]
+        },
+        {
+            "lowDice": 35,
+            "highDice": 39,
+            "rows": ["Potion of animal friendship"]
+        },
+        {
+            "lowDice": 40,
+            "highDice": 44,
+            "rows": ["Potion of hill giant strength"]
+        },
+        {
+            "lowDice": 45,
+            "highDice": 49,
+            "rows": ["Potion of growth"]
+        },
+        {
+            "lowDice": 50,
+            "highDice": 54,
+            "rows": ["Potion of water breathing"]
+        },
+        {
+            "lowDice": 55,
+            "highDice": 59,
+            "rows": ["Spell scroll (2nd level)"]
+        },
+        {
+            "lowDice": 60,
+            "highDice": 64,
+            "rows": ["Spell scroll (3rd level)"]
+        },
+        {
+            "lowDice": 65,
+            "highDice": 67,
+            "rows": ["Bag of holding"]
+        },
+        {
+            "lowDice": 68,
+            "highDice": 70,
+            "rows": ["Keoghtom's ointment"]
+        },
+        {
+            "lowDice": 71,
+            "highDice": 73,
+            "rows": ["Oil of slipperiness"]
+        },
+        {
+            "lowDice": 74,
+            "highDice": 75,
+            "rows": ["Dust of disappearance"]
+        },
+        {
+            "lowDice": 76,
+            "highDice": 77,
+            "rows": ["Dust of dryness"]
+        },
+        {
+            "lowDice": 78,
+            "highDice": 79,
+            "rows": ["Dust of sneezing and choking"]
+        },
+        {
+            "lowDice": 80,
+            "highDice": 81,
+            "rows": ["Elemental gem"]
+        },
+        {
+            "lowDice": 82,
+            "highDice": 83,
+            "rows": ["Philter of love"]
+        },
+        {
+            "lowDice": 84,
+            "highDice": 84,
+            "rows": ["Alchemy jug"]
+        },
+        {
+            "lowDice": 85,
+            "highDice": 85,
+            "rows": ["Cap of water breathing"]
+        },
+        {
+            "lowDice": 86,
+            "highDice": 86,
+            "rows": ["Cloak of the manta ray"]
+        },
+        {
+            "lowDice": 87,
+            "highDice": 87,
+            "rows": ["Driftglobe"]
+        },
+        {
+            "lowDice": 88,
+            "highDice": 88,
+            "rows": ["Goggles of night"]
+        },
+        {
+            "lowDice": 89,
+            "highDice": 89,
+            "rows": ["Helm of comprehending languages"]
+        },
+        {
+            "lowDice": 90,
+            "highDice": 90,
+            "rows": ["Immovable rod"]
+        },
+        {
+            "lowDice": 91,
+            "highDice": 91,
+            "rows": ["Lantern of revealing"]
+        },
+        {
+            "lowDice": 92,
+            "highDice": 92,
+            "rows": ["Mariner's armor"]
+        },
+        {
+            "lowDice": 93,
+            "highDice": 93,
+            "rows": ["Mithral armor"]
+        },
+        {
+            "lowDice": 94,
+            "highDice": 94,
+            "rows": ["Potion of poison"]
+        },
+        {
+            "lowDice": 95,
+            "highDice": 95,
+            "rows": ["Ring of swimming"]
+        },
+        {
+            "lowDice": 96,
+            "highDice": 96,
+            "rows": ["Robe of useful items"]
+        },
+        {
+            "lowDice": 97,
+            "highDice": 97,
+            "rows": ["Robe of climbing"]
+        },
+        {
+            "lowDice": 98,
+            "highDice": 98,
+            "rows": ["Saddle of the cavalier"]
+        },
+        {
+            "lowDice": 99,
+            "highDice": 99,
+            "rows": ["Wand of magic detection"]
+        },
+        {
+            "lowDice": 100,
+            "highDice": 100,
+            "rows": ["Wand of secrets"]
+        }
+    ]
+}

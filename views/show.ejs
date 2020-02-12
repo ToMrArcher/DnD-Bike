@@ -1,0 +1,32 @@
+<%- include("partials/header.ejs") %> 
+
+<div class="ui main text container segment">
+    <div class="ui huge header"><%= table.title %> </div>
+    <div class="ui top attached">
+        <div class="item">
+            <div class="content">
+                <table class="ui celled table">  
+                    <thead>
+                        <tr>
+                            <% table.headers.forEach(function(header){ %> 
+                                <th><%= header %></th>
+                            <% }) %> 
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% table.cols.forEach(function(col){ %> 
+                            <tr>
+                                <td><%= col.lowDice %> - <%= col.highDice %> </td>
+                                <% col.rows.forEach(function(row){ %>
+                                    <td><%= row %> </td>
+                                <% }) %> 
+                            </tr>
+                        <% }) %> 
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include("partials/footer.ejs") %> 

@@ -7,32 +7,14 @@
             <div class="ui divided items">
                 <% tables.forEach(function(table){ %> 
                     <div class="item">
-                        <table class="ui celled table">
-                            <thead>
-                                <tr>
-                                    <% table.headers.forEach(function(header){ %> 
-                                        <th><%= header %></th>
-                                    <% }) %> 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <% table.cols.forEach(function(col){ %> 
-                                    <tr>
-                                        <td><%= col.lowDice %> - <%= col.highDice %> </td>
-                                        <% col.rows.forEach(function(row){ %>
-                                            <td><%= row %> </td>
-                                        <% }) %> 
-                                    </tr>
-                                <% }) %> 
-                            </tbody>
-                        </table>
+                        <a href="/tables/<%= table._id %>" class="header"><%= table.title %></a>
                     </div>
                 <% }) %> 
             </div>
         </div>
 
 
-        <
+        
     </div>
 
 

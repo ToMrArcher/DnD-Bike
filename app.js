@@ -4,9 +4,9 @@ var app = express();
 var request = require("request");
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
-var XLSX = require("xlsx");
 var multer = require("multer");
 var csv = require("csvtojson");
+var fs = require("fs");
 
 //App setup
 mongoose.connect("mongodb://localhost/dndBike");
@@ -28,26 +28,26 @@ var tableSchema = new mongoose.Schema({
 
 var Table = mongoose.model("Table", tableSchema);
 
-/* Table.create({
-    title: "Some Thing",
-    headers: [
-        "d20", 
-        "Wtf",
-        "isthis"
-    ],
-    cols: [
-        {
-            lowDice: 0,
-            highDice: 4,
-            rows: ["Hello", "coolthing"]
-        },
-        {
-            lowDice: 5,
-            highDice: 10,
-            rows: ["hello2", "thisiscool2"]
-        }
-    ]
-}) */
+// Table.create({
+//     title: "Some Thing",
+//     headers: [
+//         "d20", 
+//         "Wtf",
+//         "isthis"
+//     ],
+//     cols: [
+//         {
+//             lowDice: 0,
+//             highDice: 4,
+//             rows: ["Hello", "coolthing"]
+//         },
+//         {
+//             lowDice: 5,
+//             highDice: 10,
+//             rows: ["hello2", "thisiscool2"]
+//         }
+//     ]
+// })
 
 //ROUTING!
 
@@ -69,9 +69,32 @@ app.get("/tables", function(req, res){
 });
 
 
-// app.get("/tables/new", function(req, res){
-//     res.render("newtable")
-// });
+app.get("/tables/new", function(req, res){
+    let rawdata = fs.readFileSync('tables.json');
+    let table = JSON.parse(rawdata); 
+
+    Table.create(table, function(err, newBlog){
+        if(err){
+            console.log(err);
+        }
+        else{
+            console.log(newBlog);
+        }
+    });
+
+    res.redirect("/tables")
+});
+
+app.get("/tables/:id", function(req, res){
+    Table.findById(req.params.id, function(err, foundTable){
+        if(err){
+            redirect("/tables");
+        }
+        else{
+            res.render("show", {table: foundTable});
+        }
+    });
+});
 
 
 // app.post("/tables", upload.single("csvfile"), function(req, res, next){

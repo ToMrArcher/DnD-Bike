@@ -24,6 +24,22 @@
                         <% }) %> 
                     </tbody>
                 </table>
+
+                <button class="ui secondary button" id="rollButton">Roll</button>
+                <span id="showRoll"></span>
+
+                <script>
+                    var container = document.getElementById("showRoll");
+                    var button = document.getElementById("rollButton");
+                
+                    button.addEventListener("click", function(){
+                        var number = Math.floor(Math.random() * <%=table.cols[table.cols.length - 1].highDice%>);
+                        container.innerText = number;
+                    });
+                
+                </script>
+                
+
             </div>
         </div>
     </div>

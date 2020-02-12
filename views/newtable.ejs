@@ -1,0 +1,16 @@
+<%- include("partials/header") %> 
+<script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.15.3/xlsx.full.min.js"
+    ></script>
+    <div class="ui container" id="wrapper">
+        
+        <form action="/tables" method="POST" enctype="multipart/form-data">
+            <input type="file" name="csvfile" id="realinput">
+            <button>Submit</button>
+        </form>
+    </div>
+
+
+
+<%- include("partials/footer") %> 

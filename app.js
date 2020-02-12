@@ -4,18 +4,21 @@ var app = express();
 var request = require("request");
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
+var XLSX = require("xlsx");
+var multer = require("multer");
+var csv = require("csvtojson");
 
 //App setup
 mongoose.connect("mongodb://localhost/dndBike");
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
+var upload = multer(  {dest: "uploads/"});
 
 
 var tableSchema = new mongoose.Schema({
     title: String,
-    nRows: Number,
-    nCols: Number,
+    headers: [String],
     cols: [{
         lowDice: Number,
         highDice: Number,
@@ -27,8 +30,11 @@ var Table = mongoose.model("Table", tableSchema);
 
 /* Table.create({
     title: "Some Thing",
-    nRows: 2,
-    nCols: 2,
+    headers: [
+        "d20", 
+        "Wtf",
+        "isthis"
+    ],
     cols: [
         {
             lowDice: 0,
@@ -62,9 +68,29 @@ app.get("/tables", function(req, res){
     });
 });
 
+
+// app.get("/tables/new", function(req, res){
+//     res.render("newtable")
+// });
+
+
+// app.post("/tables", upload.single("csvfile"), function(req, res, next){
+//     csv()
+//     .fromFile(req.file.path)
+//     .then((jsonObj)=>{
+//         console.log(jsonObj);
+//         console.log(jsonObj.length);
+//         console.log(jsonObj[0][0]);
+//     });
+
+
+//     res.redirect("/tables");
+// });
+
 //I AM LISTENING GUYS!
 app.listen(3000, function(){
     console.log("Server is running");
 });
 
 
+//mongod --dbpath /System/Volumes/Data/data/db 

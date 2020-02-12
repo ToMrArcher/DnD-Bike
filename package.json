@@ -18,9 +18,14 @@
   "homepage": "https://github.com/ToMrArcher/DnD-Bike#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "csvjson-csv2json": "^5.0.6",
+    "csvtojson": "^2.0.10",
     "ejs": "^3.0.1",
     "express": "^4.17.1",
+    "formidable": "^1.2.1",
     "mongoose": "^5.8.11",
-    "request": "^2.88.0"
+    "multer": "^1.4.2",
+    "request": "^2.88.0",
+    "xlsx": "^0.15.5"
   }
 }

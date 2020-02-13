@@ -33,7 +33,7 @@
                     var button = document.getElementById("rollButton");
                 
                     button.addEventListener("click", function(){
-                        var number = Math.floor(Math.random() * <%=table.cols[table.cols.length - 1].highDice%>);
+                        var number = Math.floor(Math.random() * <%= table.cols[table.cols.length - 1].highDice %>);
                         container.innerText = number;
                     });
                 

@@ -13,8 +13,9 @@ You might also want to get yourself a mongodb database setup. This project asume
 
  - `npm install express --save`
  - `npm install body-parser --save`
- - `npm  install request --save`
+ - `npm install request --save`
  - `npm install mongoose --save`
+ - `npm install fs --save`
 
 To start, just use the badass 
 

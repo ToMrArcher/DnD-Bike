@@ -17,6 +17,8 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(expressSanitizer());
 app.use(methodOverride("_method"));
+//////////////////////////////////////////////////
+
 
 
 ////////// SCHEMA FOR THE TABLES /////////////
@@ -29,11 +31,10 @@ var tableSchema = new mongoose.Schema({
         rows: [String] 
     }]
 });
-
-
+//////////////////////////////////////////////////
 /////////TABLE MODEL////////////
 var Table = mongoose.model("Table", tableSchema);
-
+//////////////////////////////////////////////////
 
 /////////BLOG SCHEMA////////////
 var blogSchema = new mongoose.Schema({
@@ -42,14 +43,16 @@ var blogSchema = new mongoose.Schema({
     body: String,
     created: {type: Date, default: Date.now}
 });
-
+//////////////////////////////////////////////////
 ///////////BLOG MODEL/////////////
 var Blog = mongoose.model("Blog", blogSchema);
+//////////////////////////////////////////////////
 
 
-//ROUTING!
 
-//Home Page Route
+///////////ROUTING!////////////
+
+///////////HOME PAGE ROUTE!/////////////
 app.get("/", function(req, res){
     Blog.find({}, function(err, blogs){
         if(err){
@@ -60,7 +63,11 @@ app.get("/", function(req, res){
         }
     });
 });
+//////////////////////////////////////////////////
 
+
+///////////TABLES ROUTES//////////////
+///////////SHOW TABLES//////////////
 app.get("/tables", function(req, res){
     Table.find({}, function(err, tables){
         if(err){
@@ -72,8 +79,10 @@ app.get("/tables", function(req, res){
         }
     });
 });
+//////////////////////////////////////////////////
+////////////CREATES NEW TABLE!/////////////
 
-
+//Note: This will use the tables.json to create a new table. You will not be prompted with a form to create a new table.
 app.get("/tables/new", function(req, res){
     let rawdata = fs.readFileSync('tables.json');
     let table = JSON.parse(rawdata); 
@@ -89,24 +98,9 @@ app.get("/tables/new", function(req, res){
 
     res.redirect("/tables")
 });
+//////////////////////////////////////////////////
 
-
-app.get("/blogs/new", function(req, res){
-    res.render("newBlog");
-});
-
-app.get("/blogs/:id", function(req, res){
-    Blog.findById(req.params.id, function(err, foundBlog){
-        if(err){
-            res.redirect("/blogs");
-        }
-        else{
-            res.render("showBlog", {blog: foundBlog});
-        }
-    });
-});
-
-
+/////////////SHOWS SPECIFIC TABLE/////////////
 app.get("/tables/:id", function(req, res){
     Table.findById(req.params.id, function(err, foundTable){
         if(err){
@@ -117,8 +111,11 @@ app.get("/tables/:id", function(req, res){
         }
     });
 });
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
 
-
+////////////BLOGS/////////////
+////////////SHOW ALL BLOGS////////////
 app.get("/blogs", function(req, res){
     Blog.find({}, function(err, blogs){
         if(err){
@@ -129,8 +126,28 @@ app.get("/blogs", function(req, res){
         }
     });
 });
+//////////////////////////////////////////////////
 
+/////////////SHOWS FORM FOR NEW BLOG/////////////
+app.get("/blogs/new", function(req, res){
+    res.render("newBlog");
+});
+//////////////////////////////////////////////////
 
+////////////SHOW SPECIFIC BLOG/////////////
+app.get("/blogs/:id", function(req, res){
+    Blog.findById(req.params.id, function(err, foundBlog){
+        if(err){
+            res.redirect("/blogs");
+        }
+        else{
+            res.render("showBlog", {blog: foundBlog});
+        }
+    });
+});
+//////////////////////////////////////////////////
+
+////////////POST ROUTE FOR BLOGS WHEN NEW IS CREATED/////////////
 app.post("/blogs", function(req, res){
     req.body.blog.body = req.sanitize(req.body.blog.body);
     Blog.create(req.body.blog, function(err, newBlog){
@@ -142,8 +159,9 @@ app.post("/blogs", function(req, res){
         }
     });
 });
+//////////////////////////////////////////////////
 
-
+////////////EDIT A SPECIFIC BLOG//////////////
 app.get("/blogs/:id/edit", function(req, res){
     Blog.findById(req.params.id, function(err, foundBlog){
         if(err){
@@ -154,8 +172,9 @@ app.get("/blogs/:id/edit", function(req, res){
         }
     });
 });
+//////////////////////////////////////////////////
 
-
+/////////////EDIT PUT ROUTE FOR A SPECIFIC BLOG////////////
 app.put("/blogs/:id", function(req, res){
     req.body.blog.body = req.sanitize(req.body.blog.body);
     Blog.findByIdAndUpdate(req.params.id, req.body.blog, function(err, updatedBlog){
@@ -167,7 +186,9 @@ app.put("/blogs/:id", function(req, res){
         }
     });
 });
+//////////////////////////////////////////////////
 
+////////////DELETES A SPECIFIC BLOG/////////////
 app.delete("/blogs/:id", function(req, res){
     Blog.findByIdAndRemove(req.params.id, function(err){
         if(err){
@@ -178,6 +199,8 @@ app.delete("/blogs/:id", function(req, res){
         }
     });
 });
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
 
 
 //I AM LISTENING GUYS!

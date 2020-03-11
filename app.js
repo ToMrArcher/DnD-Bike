@@ -36,6 +36,7 @@ var tableSchema = new mongoose.Schema({
 var Table = mongoose.model("Table", tableSchema);
 //////////////////////////////////////////////////
 
+
 /////////BLOG SCHEMA////////////
 var blogSchema = new mongoose.Schema({
     title: String,
@@ -48,6 +49,17 @@ var blogSchema = new mongoose.Schema({
 var Blog = mongoose.model("Blog", blogSchema);
 //////////////////////////////////////////////////
 
+
+/////////ITEM SCHEMA////////////
+var itemSchema = new mongoose.Schema({
+    name: String,
+    description: String,
+    image: String
+});
+//////////////////////////////////////////////////
+///////////ITEM MODEL/////////////
+var Item = mongoose.model("Item", itemSchema);
+//////////////////////////////////////////////////
 
 
 ///////////ROUTING!////////////
@@ -87,12 +99,12 @@ app.get("/tables/new", function(req, res){
     let rawdata = fs.readFileSync('tables.json');
     let table = JSON.parse(rawdata); 
 
-    Table.create(table, function(err, newBlog){
+    Table.create(table, function(err, newTable){
         if(err){
             console.log(err);
         }
         else{
-            console.log(newBlog);
+            console.log(newTable);
         }
     });
 
@@ -202,6 +214,52 @@ app.delete("/blogs/:id", function(req, res){
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
 
+////////////ITEMS/////////////
+////////////SHOW ALL ITEMS////////////
+app.get("/items", function(req, res){
+    Item.find({}, function(err, items){
+        if(err){
+            console.log(err);
+        }
+        else{
+            res.render("items", {items: items});
+        }
+    });
+});
+//////////////////////////////////////////////////
+
+/////////////SHOWS FORM FOR NEW ITEM/////////////
+app.get("/items/new", function(req, res){
+    res.render("newItem");
+});
+//////////////////////////////////////////////////
+
+////////////SHOW SPECIFIC ITEM/////////////
+app.get("/items/:id", function(req, res){
+    Item.findById(req.params.id, function(err, foundItem){
+        if(err){
+            res.redirect("/items");
+        }
+        else{
+            res.render("showItem", {item: foundItem});
+        }
+    });
+});
+//////////////////////////////////////////////////
+
+////////////POST ROUTE FOR ITEMS WHEN NEW IS CREATED/////////////
+app.post("/items", function(req, res){
+    req.body.item.description = req.sanitize(req.body.item.description);
+    Item.create(req.body.item, function(err, newItem){
+        if(err){
+            res.render("newItem");
+        }
+        else{
+            res.redirect("/items")
+        }
+    });
+});
+//////////////////////////////////////////////////
 
 //I AM LISTENING GUYS!
 app.listen(3000, function(){

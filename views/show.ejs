@@ -5,7 +5,7 @@
     <div class="ui top attached">
         <div class="item">
             <div class="content">
-                <table class="ui celled table">  
+                <table class="ui celled red table">  
                     <thead>
                         <tr>
                             <% table.headers.forEach(function(header){ %> 
@@ -34,7 +34,7 @@
                 
                     button.addEventListener("click", function(){
                         var number = Math.floor(Math.random() * <%= table.cols[table.cols.length - 1].highDice %>);
-                        container.innerText = number;
+                        button.innerText = number;
                     });
                 
                 </script>

@@ -1,0 +1,21 @@
+<%- include("partials/header.ejs") %> 
+
+
+    <div class="ui main text container">
+        <div class="ui huge header">Items</div>
+        <div class="ui top attached">
+            <div class="ui divided items">
+                <% items.forEach(function(item){ %> 
+                    <div class="item">
+                        <a href="/items/<%= item._id %>" class="header"><%= item.name %></a>
+                    </div>
+                <% }) %> 
+            </div>
+        </div>
+
+
+        
+    </div>
+
+
+<%- include("partials/footer.ejs") %> 
